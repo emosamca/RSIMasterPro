@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RSI Master Pro — Sanal İşlemler</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, Segoe UI, sans-serif; max-width: 1200px; margin: 1.5em auto; padding: 0 1em; color: #222; }
+  .nav { margin-bottom: 1em; font-size: .95em; }
+  .nav a { margin-right: .8em; color: #2563eb; text-decoration: none; }
+  .nav a:hover { text-decoration: underline; }
+  h1 { font-size: 1.4em; margin: 0 0 .8em 0; }
+  h2 { font-size: 1.05em; margin: 1.5em 0 .4em 0; color: #444; }
+  .stats-group { margin-bottom: 1em; }
+  .stats-group h3 { font-size: .9em; margin: 0 0 .4em 0; color: #555; font-weight: 600; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .75em; }
+  .card { border: 1px solid #e0e0e0; border-radius: 8px; padding: .6em .85em; background: #fff; }
+  .card .label { font-size: .72em; color: #777; text-transform: uppercase; letter-spacing: .03em; }
+  .card .value { font-size: 1.3em; font-weight: 600; margin-top: .15em; font-variant-numeric: tabular-nums; }
+  .mode-std { color: #2563eb; font-size: .8em; font-weight: 600; }
+  .mode-nosl { color: #9333ea; font-size: .8em; font-weight: 600; }
+  .reset-btn { font-size: .8em; padding: .3em .6em; margin-left: .6em; border-radius: 4px; border: 1px solid #ccc; background: #fff; color: #555; cursor: pointer; }
+  .reset-btn:hover { background: #fee; color: #b00020; border-color: #b00020; }
+  table { width: 100%; border-collapse: collapse; font-size: .9em; margin-top: .3em; }
+  th { background: #f7f7f7; text-align: right; padding: .5em .55em; border-bottom: 2px solid #e0e0e0; color: #555; font-weight: 600; }
+  td { padding: .5em .55em; border-bottom: 1px solid #eee; text-align: right; font-variant-numeric: tabular-nums; }
+  th:first-child, td:first-child { text-align: left; }
+  td.sym { font-family: ui-monospace, Consolas, monospace; font-weight: 600; }
+  .side-long { color: #0a8a3a; font-weight: 600; }
+  .side-short { color: #b00020; font-weight: 600; }
+  .pos { color: #0a8a3a; font-weight: 600; }
+  .neg { color: #b00020; font-weight: 600; }
+  tr.pos-row td { background: rgba(10, 138, 58, 0.06); }
+  tr.neg-row td { background: rgba(176, 0, 32, 0.06); }
+  .reason-tp { color: #0a8a3a; font-weight: 600; }
+  .reason-sl { color: #b00020; font-weight: 600; }
+  .empty { color: #999; font-style: italic; padding: 1em; text-align: center; border: 1px dashed #ddd; border-radius: 6px; }
+  .last-update { color: #888; font-size: .8em; margin-top: 1em; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="/">Koin Listesi</a> |
+  <a href="/dashboard.html"><strong>Sanal İşlemler</strong></a> |
+  <a href="/settings.html">Strateji Ayarları</a>
+</div>
+<h1>Sanal İşlemler</h1>
+
+<div class="stats-group">
+  <h3>SL + TP (STANDARD)
+    <button class="reset-btn" onclick="resetMode('STANDARD')">Sıfırla</button>
+  </h3>
+  <div class="stats" id="statsStd"></div>
+</div>
+<div class="stats-group">
+  <h3>Sadece TP (NO_SL)
+    <button class="reset-btn" onclick="resetMode('NO_SL')">Sıfırla</button>
+  </h3>
+  <div class="stats" id="statsNoSl"></div>
+</div>
+
+<h2>Açık Pozisyonlar</h2>
+<div id="open"></div>
+
+<h2>Son Kapanan İşlemler (en fazla 20)</h2>
+<div id="closed"></div>
+
+<div class="last-update" id="lastUpdate">—</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt    = (v, d) => v == null ? '-' : Number(v).toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: d });
+const fmtP   = v => fmt(v, 4);
+const fmtQ   = v => fmt(v, 4);
+const fmtPnl = v => v == null ? '-' : (v >= 0 ? '+' : '') + fmt(v, 2);
+const fmtDate = v => {
+  if (!v) return '-';
+  const d = new Date(v);
+  if (isNaN(d)) return '-';
+  return d.toLocaleString();
+};
+const sgnCls = v => v == null ? '' : (v >= 0 ? 'pos' : 'neg');
+const rowCls = v => v == null ? '' : (v >= 0 ? 'pos-row' : 'neg-row');
+
+async function load() {
+  try {
+    const r = await fetch('/api/dashboard');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    renderStats('statsStd', data.stats?.standard);
+    renderStats('statsNoSl', data.stats?.noSl);
+    renderOpen(data.openTrades);
+    renderClosed(data.closedTrades);
+    $('lastUpdate').textContent = 'Son güncelleme: ' + new Date().toLocaleTimeString();
+  } catch (e) {
+    $('lastUpdate').textContent = 'Hata: ' + e.message;
+  }
+}
+
+function renderStats(elId, s) {
+  const el = $(elId);
+  if (!s) { el.innerHTML = ''; return; }
+  el.innerHTML = `
+    <div class="card"><div class="label">Açık</div><div class="value">${s.openCount}</div></div>
+    <div class="card"><div class="label">Toplam Kapanan</div><div class="value">${s.closedCount}</div></div>
+    <div class="card"><div class="label">Pozitif</div><div class="value pos">${s.positiveCount}</div></div>
+    <div class="card"><div class="label">Negatif</div><div class="value neg">${s.negativeCount}</div></div>
+    <div class="card"><div class="label">Toplam K/Z (USDT)</div><div class="value ${sgnCls(s.totalPnl)}">${fmtPnl(s.totalPnl)}</div></div>
+  `;
+}
+
+function renderOpen(trades) {
+  const c = $('open');
+  if (!trades || trades.length === 0) {
+    c.innerHTML = '<div class="empty">Açık pozisyon yok.</div>';
+    return;
+  }
+  let html = `<table>
+    <thead><tr>
+      <th>Sembol</th><th>Yön</th><th>Tip</th>
+      <th>Giriş Fiyatı</th><th>Adet</th><th>Maliyet (USDT)</th>
+      <th>SL</th><th>TP</th>
+      <th>Anlık Fiyat</th><th>K/Z</th>
+      <th>Açılış</th>
+    </tr></thead><tbody>`;
+  for (const t of trades) {
+    const noSl = t.trackingMode === 'NO_SL';
+    const modeCls = noSl ? 'mode-nosl' : 'mode-std';
+    const modeText = noSl ? 'NO_SL' : 'STANDARD';
+    const cost = t.entryPrice * t.quantity;
+    html += `<tr class="${rowCls(t.unrealizedPnl)}">
+      <td class="sym">${t.symbol}</td>
+      <td class="side-${t.side.toLowerCase()}">${t.side}</td>
+      <td class="${modeCls}" style="text-align:left">${modeText}</td>
+      <td>${fmtP(t.entryPrice)}</td>
+      <td>${fmtQ(t.quantity)}</td>
+      <td>${fmt(cost, 2)}</td>
+      <td>${noSl ? '—' : fmtP(t.stopLoss)}</td>
+      <td>${fmtP(t.takeProfit)}</td>
+      <td>${fmtP(t.currentPrice)}</td>
+      <td class="${sgnCls(t.unrealizedPnl)}">${fmtPnl(t.unrealizedPnl)}</td>
+      <td style="text-align:left">${fmtDate(t.entryTime)}</td>
+    </tr>`;
+  }
+  c.innerHTML = html + '</tbody></table>';
+}
+
+function renderClosed(trades) {
+  const c = $('closed');
+  if (!trades || trades.length === 0) {
+    c.innerHTML = '<div class="empty">Henüz kapanan işlem yok.</div>';
+    return;
+  }
+  let html = `<table>
+    <thead><tr>
+      <th>Sembol</th><th>Yön</th><th>Tip</th>
+      <th>Giriş</th><th>Çıkış</th>
+      <th>Adet</th><th>Maliyet (USDT)</th>
+      <th>Sebep</th>
+      <th>K/Z (USDT)</th>
+      <th>Kapanış</th>
+    </tr></thead><tbody>`;
+  for (const t of trades) {
+    const reasonCls = t.exitReason === 'TP' ? 'reason-tp' : (t.exitReason === 'SL' ? 'reason-sl' : '');
+    const noSl = t.trackingMode === 'NO_SL';
+    const modeCls = noSl ? 'mode-nosl' : 'mode-std';
+    const modeText = noSl ? 'NO_SL' : 'STANDARD';
+    const cost = t.entryPrice * t.quantity;
+    html += `<tr class="${rowCls(t.pnl)}">
+      <td class="sym">${t.symbol}</td>
+      <td class="side-${t.side.toLowerCase()}">${t.side}</td>
+      <td class="${modeCls}" style="text-align:left">${modeText}</td>
+      <td>${fmtP(t.entryPrice)}</td>
+      <td>${fmtP(t.exitPrice)}</td>
+      <td>${fmtQ(t.quantity)}</td>
+      <td>${fmt(cost, 2)}</td>
+      <td class="${reasonCls}" style="text-align:left">${t.exitReason || '-'}</td>
+      <td class="${sgnCls(t.pnl)}">${fmtPnl(t.pnl)}</td>
+      <td style="text-align:left">${fmtDate(t.exitTime)}</td>
+    </tr>`;
+  }
+  c.innerHTML = html + '</tbody></table>';
+}
+
+async function resetMode(mode) {
+  const label = mode === 'NO_SL' ? 'SL\'siz' : 'Standart';
+  if (!confirm(label + ' tüm alımlar silinecek ve istatistikleri sıfırlanacak. Emin misin?')) return;
+  try {
+    const r = await fetch('/api/trades/' + encodeURIComponent(mode), { method: 'DELETE' });
+    if (!r.ok) {
+      alert('Sıfırlama başarısız: HTTP ' + r.status);
+      return;
+    }
+    await load();
+  } catch (e) {
+    alert('Hata: ' + e.message);
+  }
+}
+
+load();
+setInterval(load, 2000);
+</script>
+</body>
+</html>

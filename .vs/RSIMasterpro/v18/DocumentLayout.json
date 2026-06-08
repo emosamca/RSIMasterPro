@@ -1,0 +1,307 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\csharpprojeler\\RSIMasterpro\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\services\\strategyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:services\\strategyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\services\\telegramservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:services\\telegramservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\configuration\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:configuration\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\indicators\\emaindicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:indicators\\emaindicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\indicators\\dmiindicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:indicators\\dmiindicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\indicators\\divergenceindicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:indicators\\divergenceindicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\indicators\\atrindicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:indicators\\atrindicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\models\\tradesignal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:models\\tradesignal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\models\\cryptosymbol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:models\\cryptosymbol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|d:\\csharpprojeler\\rsimasterpro\\services\\binanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5630E46-5267-2617-D620-EF217CC45B7C}|RSIMasterpro.csproj|solutionrelative:services\\binanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 1130,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.html",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "wwwroot\\index.html",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\wwwroot\\index.html",
+              "RelativeToolTip": "wwwroot\\index.html",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAACAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-05-16T19:16:31.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Services\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "Services\\DatabaseService.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Services\\DatabaseService.cs",
+              "RelativeToolTip": "Services\\DatabaseService.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAYwBUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TelegramService.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Services\\TelegramService.cs",
+              "RelativeDocumentMoniker": "Services\\TelegramService.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Services\\TelegramService.cs",
+              "RelativeToolTip": "Services\\TelegramService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAqwB4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AppSettings.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Configuration\\AppSettings.cs",
+              "RelativeDocumentMoniker": "Configuration\\AppSettings.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Configuration\\AppSettings.cs",
+              "RelativeToolTip": "Configuration\\AppSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EmaIndicator.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Indicators\\EmaIndicator.cs",
+              "RelativeDocumentMoniker": "Indicators\\EmaIndicator.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Indicators\\EmaIndicator.cs",
+              "RelativeToolTip": "Indicators\\EmaIndicator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DmiIndicator.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Indicators\\DmiIndicator.cs",
+              "RelativeDocumentMoniker": "Indicators\\DmiIndicator.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Indicators\\DmiIndicator.cs",
+              "RelativeToolTip": "Indicators\\DmiIndicator.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DivergenceIndicator.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Indicators\\DivergenceIndicator.cs",
+              "RelativeDocumentMoniker": "Indicators\\DivergenceIndicator.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Indicators\\DivergenceIndicator.cs",
+              "RelativeToolTip": "Indicators\\DivergenceIndicator.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AtrIndicator.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Indicators\\AtrIndicator.cs",
+              "RelativeDocumentMoniker": "Indicators\\AtrIndicator.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Indicators\\AtrIndicator.cs",
+              "RelativeToolTip": "Indicators\\AtrIndicator.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TradeSignal.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Models\\TradeSignal.cs",
+              "RelativeDocumentMoniker": "Models\\TradeSignal.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Models\\TradeSignal.cs",
+              "RelativeToolTip": "Models\\TradeSignal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CryptoSymbol.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Models\\CryptoSymbol.cs",
+              "RelativeDocumentMoniker": "Models\\CryptoSymbol.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Models\\CryptoSymbol.cs",
+              "RelativeToolTip": "Models\\CryptoSymbol.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T18:49:40.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StrategyService.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Services\\StrategyService.cs",
+              "RelativeDocumentMoniker": "Services\\StrategyService.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Services\\StrategyService.cs",
+              "RelativeToolTip": "Services\\StrategyService.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAAALIAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T16:40:51.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BinanceService.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Services\\BinanceService.cs",
+              "RelativeDocumentMoniker": "Services\\BinanceService.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Services\\BinanceService.cs",
+              "RelativeToolTip": "Services\\BinanceService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAYwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T16:29:33.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-14T16:07:06.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Worker.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Worker.cs",
+              "RelativeDocumentMoniker": "Worker.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Worker.cs",
+              "RelativeToolTip": "Worker.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAAAFcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T16:05:28.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\csharpprojeler\\RSIMasterpro\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\csharpprojeler\\RSIMasterpro\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T16:04:14.058Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

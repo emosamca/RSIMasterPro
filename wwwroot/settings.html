@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RSI Master Pro — Strateji Ayarları</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, Segoe UI, sans-serif; max-width: 720px; margin: 1.5em auto; padding: 0 1em; color: #222; }
+  .nav { margin-bottom: 1em; font-size: .95em; }
+  .nav a { margin-right: .8em; color: #2563eb; text-decoration: none; }
+  .nav a:hover { text-decoration: underline; }
+  h1 { font-size: 1.4em; margin: 0 0 .3em 0; }
+  .sub { color: #777; font-size: .9em; margin-bottom: 1.5em; }
+  .msg { padding: .6em .8em; margin-bottom: 1em; border-radius: 4px; display: none; }
+  .msg.err { background: #fee; color: #b30000; border: 1px solid #fbb; display: block; white-space: pre-line; }
+  .msg.ok { background: #eef9e8; color: #1a6b1a; border: 1px solid #b7e4a3; display: block; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; }
+  .field label { font-size: .82em; font-weight: 600; color: #444; margin-bottom: .25em; }
+  .field .hint { font-size: .74em; color: #888; margin-top: .25em; }
+  .field input { padding: .55em .7em; font-size: 1em; border: 1px solid #ccc; border-radius: 4px; font-variant-numeric: tabular-nums; }
+  .field input:focus { outline: none; border-color: #2563eb; }
+  .actions { margin-top: 1.5em; display: flex; gap: .6em; }
+  button { padding: .6em 1.3em; font-size: 1em; border: 0; border-radius: 4px; cursor: pointer; }
+  .save { background: #2563eb; color: #fff; }
+  .save:hover { background: #1d4ed8; }
+  .save:disabled { background: #9ab; cursor: default; }
+  .reload { background: #fff; color: #555; border: 1px solid #ccc; }
+  .reload:hover { background: #f3f3f3; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="/">Koin Listesi</a> |
+  <a href="/dashboard.html">Sanal İşlemler</a> |
+  <a href="/settings.html"><strong>Strateji Ayarları</strong></a>
+</div>
+<h1>Strateji Ayarları</h1>
+<div class="sub">Buradaki değerler kaydedildiğinde bir sonraki strateji taramasından itibaren kullanılır.</div>
+
+<div id="msg" class="msg"></div>
+
+<form id="form" onsubmit="save(event)">
+  <div class="grid">
+    <div class="field">
+      <label for="FastRsiLength">Hızlı RSI Periyodu</label>
+      <input id="FastRsiLength" type="number" min="1" step="1" required>
+      <span class="hint">Diverjans hesabındaki hızlı RSI uzunluğu.</span>
+    </div>
+    <div class="field">
+      <label for="SlowRsiLength">Yavaş RSI Periyodu</label>
+      <input id="SlowRsiLength" type="number" min="1" step="1" required>
+      <span class="hint">Diverjans hesabındaki yavaş RSI uzunluğu.</span>
+    </div>
+    <div class="field">
+      <label for="EmaLength">EMA Periyodu</label>
+      <input id="EmaLength" type="number" min="1" step="1" required>
+      <span class="hint">Trend filtresi EMA uzunluğu (fiyat üstünde=long, altında=short).</span>
+    </div>
+    <div class="field">
+      <label for="MinAdx">Min. ADX</label>
+      <input id="MinAdx" type="number" min="0" max="100" step="1" required>
+      <span class="hint">Sinyal için gereken minimum trend gücü (0-100).</span>
+    </div>
+    <div class="field">
+      <label for="TakeProfitAtrMult">Kar Al ATR Çarpanı</label>
+      <input id="TakeProfitAtrMult" type="number" min="0" step="0.1" required>
+      <span class="hint">TP mesafesi = ATR × bu çarpan.</span>
+    </div>
+    <div class="field">
+      <label for="StopLossAtrMult">Stop ATR Çarpanı</label>
+      <input id="StopLossAtrMult" type="number" min="0" step="0.1" required>
+      <span class="hint">SL mesafesi = ATR × bu çarpan.</span>
+    </div>
+    <div class="field">
+      <label for="RiskPerTrade">İşlem Başına Risk (%)</label>
+      <input id="RiskPerTrade" type="number" min="0" step="0.1" required>
+      <span class="hint">Pozisyon büyüklüğü için hesap bakiyesinin yüzdesi.</span>
+    </div>
+    <div class="field">
+      <label for="AccountEquity">Hesap Bakiyesi (USDT)</label>
+      <input id="AccountEquity" type="number" min="0" step="1" required>
+      <span class="hint">Pozisyon büyüklüğü hesabında kullanılan varsayılan bakiye.</span>
+    </div>
+  </div>
+  <div class="actions">
+    <button type="submit" class="save" id="saveBtn">Kaydet</button>
+    <button type="button" class="reload" onclick="load()">Sıfırla (kayıtlı değerleri getir)</button>
+  </div>
+</form>
+
+<script>
+const FIELDS = [
+  'FastRsiLength', 'SlowRsiLength', 'EmaLength', 'MinAdx',
+  'TakeProfitAtrMult', 'StopLossAtrMult', 'RiskPerTrade', 'AccountEquity'
+];
+const $ = id => document.getElementById(id);
+
+function showMsg(text, type) {
+  const m = $('msg');
+  m.textContent = text;
+  m.className = 'msg ' + type;
+  if (type === 'ok') setTimeout(() => { m.className = 'msg'; m.textContent = ''; }, 3000);
+}
+
+async function load() {
+  try {
+    const r = await fetch('/api/strategy');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const s = await r.json();
+    for (const f of FIELDS) {
+      const key = f.charAt(0).toLowerCase() + f.slice(1); // camelCase from API
+      if (s[key] != null) $(f).value = s[key];
+    }
+  } catch (e) {
+    showMsg('Ayarlar yüklenemedi: ' + e.message, 'err');
+  }
+}
+
+async function save(e) {
+  e.preventDefault();
+  $('saveBtn').disabled = true;
+  const body = {};
+  for (const f of FIELDS) {
+    const key = f.charAt(0).toLowerCase() + f.slice(1);
+    body[key] = Number($(f).value);
+  }
+  try {
+    const r = await fetch('/api/strategy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (!r.ok) {
+      let detail = 'HTTP ' + r.status;
+      try {
+        const err = await r.json();
+        if (err.errors) detail = err.errors.join('\n');
+      } catch {}
+      showMsg('Kaydedilemedi:\n' + detail, 'err');
+      return;
+    }
+    showMsg('Ayarlar kaydedildi. Bir sonraki taramada kullanılacak.', 'ok');
+  } catch (e) {
+    showMsg('Hata: ' + e.message, 'err');
+  } finally {
+    $('saveBtn').disabled = false;
+  }
+}
+
+load();
+</script>
+</body>
+</html>
