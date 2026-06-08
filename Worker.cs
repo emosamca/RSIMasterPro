@@ -9,7 +9,6 @@ public class Worker : BackgroundService
     private readonly DatabaseService _database;
     private readonly TelegramService _telegram;
 
-
     public Worker(
         ILogger<Worker> logger,
         StrategyService strategy,
